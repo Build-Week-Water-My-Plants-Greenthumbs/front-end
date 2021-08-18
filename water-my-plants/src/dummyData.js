@@ -37,16 +37,16 @@ export const plantData = [
     {
         id: 3,
         nickname: 'Delicate No Flower',
-        species: Ficus,
+        species: ficus,
         },
     {
         id: 4,
         nickname: 'Mr. Big',
-        species: 'Tropical',
+        species: tropical,
     },
     {
         id: 5,
         nickname: 'Clingy',
-        species: 'Vine',
+        species: vine,
     },
 ];
