@@ -21,3 +21,8 @@
   color: white;
 }
 
+.Links{
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}

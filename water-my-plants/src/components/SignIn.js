@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory }           from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 
 //InitialState
@@ -26,9 +26,6 @@ const SignIn = () => {
     
     return (
         <>
-            <header>
-                <h1 className="sign-in-header">Water Your Plants!</h1>
-            </header>
             <div className="sign-in-img-container">
                 {/* <img className="sign-in-image"
                     /> */}
