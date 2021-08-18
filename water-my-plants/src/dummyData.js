@@ -1,4 +1,3 @@
-
 export const plantData = [
     {
         id: 1,
@@ -32,7 +31,7 @@ export const plantData = [
         id: 5,
         nickname: 'Clingy',
         species: 'Vine',
-        image: './images/vine.jpg'
+        image: './images/vine.jpg',
         h20Frequency: 3,
     },
 ];
