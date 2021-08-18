@@ -1,26 +1,26 @@
 export const cactus = {
     image: './images/cactus.jpg',
-    h20Frequency: 7,
+    h2oFrequency: 7,
 };
 
 export const succulent = {
     image: './images/succulent.jpg',
-    h20Frequency: 14
+    h2oFrequency: 14
 };
 
 export const ficus = {
     image: './images/ficus.jpg',
-    h20Frequency: 10,
+    h2oFrequency: 10,
 };
 
 export const tropical = {
     image: './images/tropical.jpg',
-    h20Frequency: 7,
+    h2oFrequency: 7,
 };
 
 export const vine = {
-    image: './images/vine.jpg'
-    h20Frequency: 3,
+    image: './images/vine.jpg',
+    h2oFrequency: 3,
 };
 
 export const plantData = [
@@ -37,16 +37,16 @@ export const plantData = [
     {
         id: 3,
         nickname: 'Delicate No Flower',
-        species: Ficus,
+        species: ficus,
         },
     {
         id: 4,
         nickname: 'Mr. Big',
-        species: 'Tropical',
+        species: tropical,
     },
     {
         id: 5,
         nickname: 'Clingy',
-        species: 'Vine',
+        species: vine,
     },
 ];
