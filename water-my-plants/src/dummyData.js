@@ -1,3 +1,4 @@
+  
 export const cactus = {
     image: './images/cactus.jpg',
     h2oFrequency: 7,
