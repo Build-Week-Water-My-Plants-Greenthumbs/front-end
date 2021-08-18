@@ -33,9 +33,6 @@ export default function SignUp () {
 
     return (
         <>
-            <header>
-                <h1 className="sign-up-header">Water Your Plants!</h1>
-            </header>
             <div className="sign-up-img-container">
                 <div className='sign-up-container'>
                 <form className="sign-up-form" onSubmit={handleSubmit}>
@@ -77,7 +74,7 @@ export default function SignUp () {
                     </label>
                     <br>
                     </br>
-                    <Link id='signInLink' to="/">
+                    <Link id='signInLink' to="/signIn">
                         Already a user? <span className='sign-in-cta'>Sign-in!</span>
                     </Link>
                     <button className='sign-up-btn' > Register</button>

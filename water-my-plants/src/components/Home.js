@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import SignIn from "./SignIn";
 
 const Home = () => {
   return (
@@ -7,7 +9,7 @@ const Home = () => {
         <header>
           <ul class="actions">
             <li>
-              <button class="button primary">Sign In</button>
+              <Link className='Links' to='/signIn'><h3 >Sign In!</h3></Link>
             </li>
             <li>
               <a href="#first" class="arrow scrolly">
