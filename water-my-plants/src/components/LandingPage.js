@@ -9,6 +9,8 @@ const LandingPage = () => {
   return (
     <div>
       <h3>Username goes here...</h3>
+      <Link to='/add-plant'><button>Add New Plant</button></Link>
+
       {plantData.map((plant) => {
         return (
           <div key={plant.id}>

@@ -22,7 +22,7 @@ function App() {
       </header>
       <Route exact path="/signIn" component={SignIn} />
       <Route path="/sign-up" component={SignUp} />
-      {/* <Route exact path="/add-plant" component={AddPlantForm} /> */}
+      <Route exact path="/add-plant" component={AddPlantForm} />
       <Route path='/dashboard' component={LandingPage}/>
       
       {/* <Route exact path="/plant-list" component={PlantList} />
