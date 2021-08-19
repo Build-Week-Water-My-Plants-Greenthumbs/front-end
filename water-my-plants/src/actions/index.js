@@ -4,3 +4,7 @@ export const CREATE_PLANT = "CREATE_PLANT";
 export const EDIT_PLANT = "EDIT_PLANT";
 export const WATER = "WATER";
 
+//added redux-thunk to dependencies adding comment to get commit to push
+export const createUser = () => {
+
+}
