@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory }           from "react-router-dom";
-
+import { Link, useHistory } from "react-router-dom";
+import { axiosWithAuth } from "../helpers/axiosWithAuth";
+import { connect } from "react-redux";
+import { loginUser } from "../actions";
 
 //InitialState
 const initialState = {
     username: "",
-    phone: "",
     password: "",
 };
 
 
 // SignIn component
-const SignIn = () => {
-    const [formState, setFormState]           = useState( initialState );
+const SignIn = (props) => {
+    const [formState, setFormState] = useState( initialState );
     // const [buttonDisabled, setButtonDisabled] = useState( true );
-    const [errors, setErrors]                 = useState( initialState );
+    const [errors, setErrors] = useState( initialState );
+
+    useEffect(() => {
+        props.success && history.push('/dashboard')
+    }, [props.success])
 
     
     const change = ( e ) => {
@@ -23,17 +28,19 @@ const SignIn = () => {
         setErrors( name, value );
     };
 
+    const handleSubmit = e => {
+        e.preventDefault();
+        props.loginUser(formState);
+    }
+
     
     return (
         <>
-            <header>
-                <h1 className="sign-in-header">Water Your Plants!</h1>
-            </header>
             <div className="sign-in-img-container">
                 {/* <img className="sign-in-image"
                     /> */}
                 <section className="sign-in-container">
-                    <form className="sign-in-form" >
+                    <form className="sign-in-form" onSubmit={handleSubmit}>
                         <h2 className='sign-in-title'>Sign in</h2>
                         <label className="sign-in-label" htmlFor="username">
                             Username:
@@ -46,19 +53,6 @@ const SignIn = () => {
                                onChange={change}
                         />
                         <p>{errors.username}</p>
-
-                        <label className="sign-in-label" htmlFor="phone">
-                            Phone Number:
-                        </label>
-                        <input className="sign-in-input"
-                               type="text"
-                               name="phone"
-                               placeholder="Enter your phone number"
-                               value={formState.phone}
-                               onChange={change}
-                        />
-                        <p>{errors.phone}</p>
-
                         <label className="sign-in-label" htmlFor="password">
                             Password:
                         </label>
@@ -70,7 +64,7 @@ const SignIn = () => {
                                onChange={change}
                         />
                         <p className="error">{errors.password}</p>
-
+                        {props.error && <p>{props.error}</p>}
                         <Link id='signUpLink' to="/sign-up">
                             Need an account? <span className='sign-up-cta'>Sign-up</span>
                         </Link>
@@ -84,4 +78,11 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;
+const mapStateToProps = state => {
+    return {
+        success: state.loggedIn,
+        error: state.logInFail
+    }
+}
+
+export default connect(mapStateToProps, { loginUser })(SignIn);

@@ -1,23 +1,25 @@
-import React, { useState } from "react";
-import { Link, useHistory }           from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { createUser } from "../actions";
 
-
-
-
-
-export default function SignUp () {
+const SignUp = (props) => {
     const [formData, setFormData] = useState({
         username: "",
         password: "",
         phone_number: "",
     });
-    const [errors, setErrors] = useState( {
-        username: "",
-        password: "",
-        phone_number: "",
-    } );
+    // const [errors, setErrors] = useState( {
+    //     username: "",
+    //     password: "",
+    //     phone_number: "",
+    // } );
 
     const history = useHistory();
+
+    useEffect(() => {
+        props.success && history.push('/signIn')
+    }, [props.success])
 
     const onInputChange = event => {
         const newForm = { ...formData, [event.target.name]: event.target.value };
@@ -25,17 +27,17 @@ export default function SignUp () {
         setFormData( newForm );
     };
 
+   
     const handleSubmit = event => {
-        
+        event.preventDefault();
+
+        props.createUser(formData);
     }
 
     
 
     return (
         <>
-            <header>
-                <h1 className="sign-up-header">Water Your Plants!</h1>
-            </header>
             <div className="sign-up-img-container">
                 <div className='sign-up-container'>
                 <form className="sign-up-form" onSubmit={handleSubmit}>
@@ -75,9 +77,10 @@ export default function SignUp () {
                         />
                         
                     </label>
+                    { props.error && <p>{props.error}</p>}
                     <br>
                     </br>
-                    <Link id='signInLink' to="/">
+                    <Link id='signInLink' to="/signIn">
                         Already a user? <span className='sign-in-cta'>Sign-in!</span>
                     </Link>
                     <button className='sign-up-btn' > Register</button>
@@ -87,4 +90,13 @@ export default function SignUp () {
             </div>
         </>
     );
+};
+
+const mapStateToProps = state => {
+    return {
+        success: state.signedUp,
+        error: state.signUpFail
+    }
 }
+
+export default connect(mapStateToProps, { createUser })(SignUp);
