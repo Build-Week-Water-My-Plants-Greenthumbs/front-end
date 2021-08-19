@@ -23,8 +23,10 @@ const SignUp = (props) => {
         setFormData( newForm );
     };
 
-    const handleSubmit = e => {
-        e.preventDefault();
+   
+    const handleSubmit = event => {
+        event.preventDefault();
+
         props.createUser(formData);
     }
 
