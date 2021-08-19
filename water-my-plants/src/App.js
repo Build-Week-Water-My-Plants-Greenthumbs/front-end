@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SignIn from './components/SignIn';
@@ -5,10 +6,16 @@ import SignUp from './components/SignUp';
 import AddPlantForm from './components/AddPlantForm.js'
 import PlantList from './components/PlantList'
 import Plant from './components/Plant'
+=======
+
+import { Route } from 'react-router-dom';
+>>>>>>> 8cf87966d96b8c527cafc5db1f05308de365635c
 import './App.css';
+import Home from './components/Home'
 
 function App() {
   return (
+<<<<<<< HEAD
       <Router>
       <div>
           <section className="App-body">
@@ -31,6 +38,18 @@ function App() {
           </section>
       </div>
       </Router>
+=======
+    <div className="App">
+        <header>
+        <h1>Water My Plants</h1>
+          <p>
+            Never forget when it's time to feed your foliage and quench your
+            plants' thirst.
+          </p>
+        </header>
+        <Route path='/' component={Home}/>
+    </div>
+>>>>>>> 8cf87966d96b8c527cafc5db1f05308de365635c
   );
 }
 
