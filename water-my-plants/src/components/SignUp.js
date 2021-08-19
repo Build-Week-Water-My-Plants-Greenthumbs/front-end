@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { Link, useHistory }           from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { connnect } from "react-redux";
+import { createUser } from "../actions";
 
-
-
-
-
-export default function SignUp () {
+const SignUp = () => {
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -26,7 +24,8 @@ export default function SignUp () {
     };
 
     const handleSubmit = event => {
-        
+        e.preventDefault();
+        props.createUser(formData);
     }
 
     
@@ -84,4 +83,6 @@ export default function SignUp () {
             </div>
         </>
     );
-}
+};
+
+export default connect(null, { createUser })(SignUp);
