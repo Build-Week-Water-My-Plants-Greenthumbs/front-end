@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { createUser } from "../actions";
@@ -9,13 +9,17 @@ const SignUp = (props) => {
         password: "",
         phone_number: "",
     });
-    const [errors, setErrors] = useState( {
-        username: "",
-        password: "",
-        phone_number: "",
-    } );
+    // const [errors, setErrors] = useState( {
+    //     username: "",
+    //     password: "",
+    //     phone_number: "",
+    // } );
 
     const history = useHistory();
+
+    useEffect(() => {
+        props.success && history.push('/signIn')
+    }, [props.success])
 
     const onInputChange = event => {
         const newForm = { ...formData, [event.target.name]: event.target.value };
@@ -73,6 +77,7 @@ const SignUp = (props) => {
                         />
                         
                     </label>
+                    { props.error && <p>{props.error}</p>}
                     <br>
                     </br>
                     <Link id='signInLink' to="/signIn">
@@ -87,4 +92,11 @@ const SignUp = (props) => {
     );
 };
 
-export default connect(null, { createUser })(SignUp);
+const mapStateToProps = state => {
+    return {
+        success: state.signedUp,
+        error: state.signUpFail
+    }
+}
+
+export default connect(mapStateToProps, { createUser })(SignUp);
