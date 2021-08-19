@@ -27,5 +27,5 @@ export const loginUser = (credentials) => dispatch => {
             localStorage.setItem('token', res.data.token)
             dispatch({type: LOGIN_USER, payload: res.data})
         })
-        .catch(err => console.log(err);)
+        .catch(err => console.log(err))
 }

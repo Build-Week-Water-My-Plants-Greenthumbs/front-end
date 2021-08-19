@@ -12,7 +12,7 @@ const initialState = {
 
 
 // SignIn component
-const SignIn = () => {
+const SignIn = (props) => {
     const [formState, setFormState] = useState( initialState );
     // const [buttonDisabled, setButtonDisabled] = useState( true );
     const [errors, setErrors] = useState( initialState );
@@ -26,7 +26,7 @@ const SignIn = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        props.loginUser(formData);
+        props.loginUser(formState);
     }
 
     
