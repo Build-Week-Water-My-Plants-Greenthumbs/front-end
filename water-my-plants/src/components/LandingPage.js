@@ -13,7 +13,7 @@ const LandingPage = () => {
           <div key={plant.id}>
             <h4>{plant.nickname}</h4>
             <Link to={`/plant/${id}`}>
-              <img src={plant.species.image} alt="plant img" />
+              <img src={plant.image} alt="plant img" />
             </Link>
           </div>
         );
