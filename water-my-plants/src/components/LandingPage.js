@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { plantData } from "../dummyData";
-import Plant from './Plant'
+import PlantListItem from './PlantListItem'
 
 const LandingPage = () => {
   const { id } = useParams();
@@ -12,8 +12,8 @@ const LandingPage = () => {
       {plantData.map((plant) => {
         return (
           <div key={plant.id}>
-            <Link to={`/plant/${plant.id}`}>
-              <Plant plant={plant}/>
+            <Link className='Links' to={`/plant/${plant.id}`}>
+              <PlantListItem plant={plant}/>
             </Link>
           </div>
         );

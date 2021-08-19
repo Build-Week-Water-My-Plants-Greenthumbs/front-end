@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { createUser } from "../actions";
 
-const SignUp = () => {
+const SignUp = (props) => {
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -23,8 +23,10 @@ const SignUp = () => {
         setFormData( newForm );
     };
 
+   
     const handleSubmit = event => {
         event.preventDefault();
+
         props.createUser(formData);
     }
 
