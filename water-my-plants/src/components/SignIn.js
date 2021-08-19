@@ -17,6 +17,10 @@ const SignIn = (props) => {
     // const [buttonDisabled, setButtonDisabled] = useState( true );
     const [errors, setErrors] = useState( initialState );
 
+    useEffect(() => {
+        props.success && history.push('/dashboard')
+    }, [props.success])
+
     
     const change = ( e ) => {
         const { name, value } = e.target;
@@ -60,7 +64,7 @@ const SignIn = (props) => {
                                onChange={change}
                         />
                         <p className="error">{errors.password}</p>
-
+                        {props.error && <p>{props.error}</p>}
                         <Link id='signUpLink' to="/sign-up">
                             Need an account? <span className='sign-up-cta'>Sign-up</span>
                         </Link>
@@ -74,4 +78,11 @@ const SignIn = (props) => {
     );
 };
 
-export default connect(null, { loginUser })(SignIn);
+const mapStateToProps = state => {
+    return {
+        success: state.loggedIn,
+        error: state.logInFail
+    }
+}
+
+export default connect(mapStateToProps, { loginUser })(SignIn);
