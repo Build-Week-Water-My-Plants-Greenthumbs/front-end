@@ -1,4 +1,4 @@
-import { CREATE_USER, EDIT_USER } from "../actions";
+import { CREATE_USER, LOGIN_USER, EDIT_USER } from "../actions";
 
 const INITIAL_STATE = {
     user: {

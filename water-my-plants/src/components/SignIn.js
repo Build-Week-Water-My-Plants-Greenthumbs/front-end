@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-
+import { axiosWithAuth } from "../helpers/axiosWithAuth";
+import { connect } from "react-redux";
+import { loginUser } from "../actions";
 
 //InitialState
 const initialState = {
@@ -12,9 +14,9 @@ const initialState = {
 
 // SignIn component
 const SignIn = () => {
-    const [formState, setFormState]           = useState( initialState );
+    const [formState, setFormState] = useState( initialState );
     // const [buttonDisabled, setButtonDisabled] = useState( true );
-    const [errors, setErrors]                 = useState( initialState );
+    const [errors, setErrors] = useState( initialState );
 
     
     const change = ( e ) => {
@@ -23,6 +25,11 @@ const SignIn = () => {
         setErrors( name, value );
     };
 
+    const handleSubmit = e => {
+        e.preventDefault();
+        props.loginUser(formData);
+    }
+
     
     return (
         <>
@@ -30,7 +37,7 @@ const SignIn = () => {
                 {/* <img className="sign-in-image"
                     /> */}
                 <section className="sign-in-container">
-                    <form className="sign-in-form" >
+                    <form className="sign-in-form" onSubmit={handleSubmit}>
                         <h2 className='sign-in-title'>Sign in</h2>
                         <label className="sign-in-label" htmlFor="username">
                             Username:
@@ -81,4 +88,4 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;
+export default connect(null, { loginUser })(SignIn);
