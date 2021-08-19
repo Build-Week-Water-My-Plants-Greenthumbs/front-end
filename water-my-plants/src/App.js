@@ -5,8 +5,6 @@ import ReactDom from 'react-dom'
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import AddPlantForm from "./components/AddPlantForm.js";
-import PlantList from "./components/PlantList";
-import Plant from "./components/Plant";
 import LandingPage from "./components/LandingPage"
 
 import "./App.css";

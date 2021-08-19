@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { connnect } from "react-redux";
+import { connect } from "react-redux";
 import { createUser } from "../actions";
 
-const SignUp = () => {
+const SignUp = (props) => {
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -23,7 +23,7 @@ const SignUp = () => {
         setFormData( newForm );
     };
 
-    const handleSubmit = event => {
+    const handleSubmit = e => {
         e.preventDefault();
         props.createUser(formData);
     }
