@@ -7,7 +7,6 @@ import { loginUser } from "../actions";
 //InitialState
 const initialState = {
     username: "",
-    phone: "",
     password: "",
 };
 
@@ -50,19 +49,6 @@ const SignIn = () => {
                                onChange={change}
                         />
                         <p>{errors.username}</p>
-
-                        <label className="sign-in-label" htmlFor="phone">
-                            Phone Number:
-                        </label>
-                        <input className="sign-in-input"
-                               type="text"
-                               name="phone"
-                               placeholder="Enter your phone number"
-                               value={formState.phone}
-                               onChange={change}
-                        />
-                        <p>{errors.phone}</p>
-
                         <label className="sign-in-label" htmlFor="password">
                             Password:
                         </label>

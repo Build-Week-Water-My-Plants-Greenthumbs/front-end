@@ -18,3 +18,14 @@ export const createUser = (user) => dispatch => {
         })
         .catch(err => console.log(err));
 };
+
+export const loginUser = (credentials) => dispatch => {
+    axiosWithAuth()
+        .post("", credentials) //add api address from backend
+        .then(res => {
+            console.log(res.data); //need to change line 15 & 16 on how res looks once receiving from backend
+            localStorage.setItem('token', res.data.token)
+            dispatch({type: LOGIN_USER, payload: res.data})
+        })
+        .catch(err => console.log(err);)
+}
