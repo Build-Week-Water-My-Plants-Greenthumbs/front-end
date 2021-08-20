@@ -18,7 +18,7 @@ const SignIn = (props) => {
     const [errors, setErrors] = useState( initialState );
 
     useEffect(() => {
-        props.success && history.push('/dashboard')
+        props.success && history.push("/dashboard");
     }, [props.success])
 
     
