@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import ReactDom from 'react-dom'
+import { ReactDOM } from "react";
 
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
