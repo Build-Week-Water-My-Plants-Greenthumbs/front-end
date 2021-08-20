@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 
 
-const initialForm = {
+    const initialForm = {
    first_name: '',
     last_name: '',
     email: ''
