@@ -9,8 +9,6 @@ const initialState = {
     password: ""
 };
 
-
-
 // SignIn component
 const SignIn = (props) => {
     const [formState, setFormState] = useState( { //temporary hardcoded user for testing
@@ -19,11 +17,8 @@ const SignIn = (props) => {
     });
     // const [buttonDisabled, setButtonDisabled] = useState( true );
     const [errors, setErrors] = useState( initialState );
-
     const history = useHistory();
-
     const { success, error, loginUser } = props;
-
     
     const change = ( e ) => {
         const { name, value } = e.target;
@@ -40,7 +35,7 @@ const SignIn = (props) => {
         success && history.push('/dashboard')
         console.log(error)
         console.log(success)
-    },)
+    },[error, success])
 
     
     return (

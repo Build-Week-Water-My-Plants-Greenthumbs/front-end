@@ -1,7 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import AddPlantForm from "./components/AddPlantForm.js";
