@@ -94,8 +94,8 @@ const SignUp = (props) => {
 
 const mapStateToProps = state => {
     return {
-        success: state.signedUp,
-        error: state.signUpFail
+        success: state.user.signedUp,
+        error: state.user.signUpFail
     }
 }
 

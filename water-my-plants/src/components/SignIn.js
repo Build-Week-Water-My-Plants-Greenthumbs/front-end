@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { axiosWithAuth } from "../helpers/axiosWithAuth";
 import { connect } from "react-redux";
 import { loginUser } from "../actions";
 
 //InitialState
 const initialState = {
     username: "",
-    password: "",
+    password: ""
 };
+
 
 
 // SignIn component
 const SignIn = (props) => {
-    const [formState, setFormState] = useState( initialState );
+    const [formState, setFormState] = useState( { //temporary hardcoded user for testing
+        username: "user1",
+        password: "securepassword1"
+    });
     // const [buttonDisabled, setButtonDisabled] = useState( true );
     const [errors, setErrors] = useState( initialState );
 
-    useEffect(() => {
-        props.success && history.push('/dashboard')
-    }, [props.success])
+    const history = useHistory();
+
+    const { success, error, loginUser } = props;
 
     
     const change = ( e ) => {
@@ -30,8 +33,14 @@ const SignIn = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        props.loginUser(formState);
+        loginUser(formState);
     }
+
+    useEffect(() => {
+        success && history.push('/dashboard')
+        console.log(error)
+        console.log(success)
+    },)
 
     
     return (
@@ -64,13 +73,14 @@ const SignIn = (props) => {
                                onChange={change}
                         />
                         <p className="error">{errors.password}</p>
-                        {props.error && <p>{props.error}</p>}
+                        
                         <Link id='signUpLink' to="/sign-up">
                             Need an account? <span className='sign-up-cta'>Sign-up</span>
                         </Link>
                         <button className="sign-in-btn" >
                             Sign In
                         </button>
+                        {error && <p>{error}</p>} 
                     </form>
                 </section>
             </div>
@@ -80,9 +90,9 @@ const SignIn = (props) => {
 
 const mapStateToProps = state => {
     return {
-        success: state.loggedIn,
-        error: state.logInFail
-    }
-}
+        success: state.user.loggedIn,
+        error: state.user.logInFail
+    };
+};
 
 export default connect(mapStateToProps, { loginUser })(SignIn);
