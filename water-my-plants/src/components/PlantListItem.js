@@ -6,7 +6,7 @@ const PlantListItem = (props) => {
     return (
         <div>
         <h4>{plant.nickname}</h4>
-        <img src={plant.image} alt='plant picture'/>
+        <img src={plant.image} alt='plant'/>
         </div>
     )
 }
