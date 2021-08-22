@@ -7,7 +7,7 @@ const SignUp = (props) => {
     const [formData, setFormData] = useState({
         username: "",
         password: "",
-        phone_number: "",
+        phone: "",
     });
     // const [errors, setErrors] = useState( {
     //     username: "",
@@ -16,10 +16,11 @@ const SignUp = (props) => {
     // } );
 
     const history = useHistory();
+    const { success, createUser } = props;
 
     useEffect(() => {
-        props.success && history.push('/signIn')
-    }, [props.success])
+        success && history.push('/signIn')
+    }, [success])
 
     const onInputChange = event => {
         const newForm = { ...formData, [event.target.name]: event.target.value };
@@ -30,11 +31,8 @@ const SignUp = (props) => {
    
     const handleSubmit = event => {
         event.preventDefault();
-
-        props.createUser(formData);
+        createUser(formData);
     }
-
-    
 
     return (
         <>
@@ -51,22 +49,16 @@ const SignUp = (props) => {
                            type="text"
                            value={formData.username}
                     />
-                  
-                    
-                    <label className="sign-up-label" htmlFor="phone_number"> Phone Number:
+                    <label className="sign-up-label" htmlFor="phone_number"> Phone Number:</label>
                         <input className="sign-up-input"
                                onChange={onInputChange}
-                               name="phone_number"
-                               placeholder="telephone_number, please"
+                               name="phoneNumber"
+                               placeholder="telephone number, please"
                                id="phone_number"
                                type="text"
-                               value={formData.phone_number}
+                               value={formData.phoneNumber}
                         />  
-
-                    </label>
-                      
-
-                    <label className="sign-up-label" htmlFor="password">Password:
+                    <label className="sign-up-label" htmlFor="password">Password:</label>
                         <input className="sign-up-input"
                                onChange={onInputChange}
                                name="password"
@@ -75,8 +67,6 @@ const SignUp = (props) => {
                                type="password"
                                value={formData.password}
                         />
-                        
-                    </label>
                     { props.error && <p>{props.error}</p>}
                     <br>
                     </br>
