@@ -11,11 +11,11 @@ export const EDIT_PLANT = "EDIT_PLANT";
 export const WATER = "WATER";
 
 export const createUser = (user) => dispatch => {
+    console.log(user);
     axios
-        .post('https://water-plants-matt.herokuapp.com/api/auth/register', user) //api sign-up endpoint not working yet.
+        .post('https://water-plants-matt.herokuapp.com/api/auth/register', user) 
         .then(res => {
-            console.log(res.data); //need to change line 15 & 16 on how res looks once receiving from backend
-            localStorage.setItem('token', res.data.token);
+            console.log(res.data); 
             dispatch({ type: CREATE_USER, payload: res.data });
         })
         .catch(err => {
@@ -25,8 +25,9 @@ export const createUser = (user) => dispatch => {
 };
 
 export const loginUser = (credentials) => dispatch => {
-    axiosWithAuth()
-        .post('/api/auth/login', credentials) //api should return 20 minute token for now
+    console.log(credentials);
+    axios
+        .post('https://water-plants-matt.herokuapp.com/api/auth/login', credentials) //api should return 20 minute token for now
         .then(res => {
             console.log(res.data); //need to change line 15 & 16 on how res looks once receiving from backend
             localStorage.setItem('token', res.data.token)
