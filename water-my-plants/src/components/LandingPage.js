@@ -1,21 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from 'react-redux';
 import { Link, useParams } from "react-router-dom";
-import { plantData } from "../dummyData";
 import PlantListItem from './PlantListItem'
+import { fetchPlantList } from '../actions'
+import { plantData } from '../dummyData'
 
 const LandingPage = (props) => {
-  const { id } = useParams();
-  console.log(plantData);
+  useEffect(() => {
+    props.fetchPlantList()
+    console.log(props.plant.plantsList)
+  },[])
   return (
     <div>
       <h3>{props.username}</h3>
       <Link to='/add-plant'><button>Add New Plant</button></Link>
 
-      {plantData.map((plant) => {
+      {props.plant.plantsList.map((plant) => {
         return (
           <div key={plant.id}>
-            <Link className='Links' to={`/plant/${plant.id}`}>
+            <Link className='Links' to={`/plant/${plant.plantId}`}>
               <PlantListItem plant={plant}/>
             </Link>
           </div>
@@ -27,8 +30,9 @@ const LandingPage = (props) => {
 
 const mapStateToProps = state => {
   return {
-    username: state.user.username
+    username: state.user.username,
+    plant: state.plant
   }
 }
 
-export default connect(mapStateToProps)(LandingPage);
+export default connect(mapStateToProps,{ fetchPlantList })(LandingPage);
