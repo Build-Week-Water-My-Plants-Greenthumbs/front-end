@@ -6,8 +6,9 @@ const INITIAL_STATE = {
       species: '',
       frequency: '',
       lastWatered: '',
-      editing: false
-    }
+      
+    },
+    editing: false
 };
 
 const plantReducer = (state = INITIAL_STATE, action) => {
@@ -34,7 +35,7 @@ const plantReducer = (state = INITIAL_STATE, action) => {
         case TOGGLE_EDIT: 
         return {
             ...state,
-            editing: !state.editing
+            editing: !state.ed
         }
         default:
             return state

@@ -7,9 +7,10 @@ import AddPlantForm from "./components/AddPlantForm.js";
 import LandingPage from "./components/LandingPage";
 import EditUser from "./components/EditUser";
 import NavBar from "./components/NavBar";
-
+import Plant from "./components/Plant"
 import "./App.css";
 import Home from "./components/Home";
+import PrivateRoute from './components/PrivateRoute'
 
 function App() {
   return (
@@ -22,13 +23,13 @@ function App() {
           plants' thirst.
         </p>
       </header>
-      <Route path="/edit" component={EditUser} />
+      <PrivateRoute path="/edit" component={EditUser} />
       <Route exact path="/signIn" component={SignIn} />
       <Route path="/sign-up" component={SignUp} />
-      <Route exact path="/add-plant" component={AddPlantForm} />
-      <Route path='/dashboard' component={LandingPage}/>
+      <PrivateRoute exact path="/add-plant" component={AddPlantForm} />
+      <PrivateRoute path='/dashboard' component={LandingPage}/>
       {/* to view an individual plant based on its id*/}
-     {/* <Route path="/plant/:id" component={Plant} /> */}
+     <PrivateRoute path="/plant/:id" component={Plant} />
       <Route exact path="/" component={Home} />
     </div>
   );

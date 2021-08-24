@@ -33,6 +33,7 @@ const AddPlantForm = () => {
               <label htmlFor='h2oFrequency'>
                   <input type='text' name='h2oFrequency' placeholder='Enter h2oFrequency' value={plant.h2oFrequency} onChange={handleChange}/>
               </label>
+              <button>Submit</button>
           </form>
           <button onClick={() => push('/dashboard')}>Cancel</button>
       </div>
