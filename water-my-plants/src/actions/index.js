@@ -17,7 +17,7 @@ export const TOGGLE_EDIT= "TOGGLE_EDIT"
 export const createUser = (user) => dispatch => {
     console.log(user);
     axios
-        .post('https://water-plants-matt.herokuapp.com:5000/api/auth/register', user) 
+        .post('https://water-plants-matt.herokuapp.com/api/auth/register', user) 
         .then(res => {
             console.log(res.data); 
             dispatch({ type: CREATE_USER, payload: res.data });
@@ -31,11 +31,11 @@ export const createUser = (user) => dispatch => {
 export const loginUser = (credentials) => dispatch => {
     console.log(credentials);
     axios
-        .post('https://water-plants-matt.herokuapp.com:5000/api/auth/login', credentials) //api should return 20 minute token for now
+        .post('https://water-plants-matt.herokuapp.com/api/auth/login', credentials) //api should return 20 minute token for now
         .then(res => {
             console.log(res.data); //need to change line 15 & 16 on how res looks once receiving from backend
             localStorage.setItem('token', res.data.token)
-            dispatch({ type: LOGIN_USER, payload: res.data })
+            dispatch({ type: LOGIN_USER, payload: res.data.user })
         })
         .catch(err => {
             console.log(err)
@@ -43,17 +43,17 @@ export const loginUser = (credentials) => dispatch => {
         });
 };
 
-export const editUser = (user) => dispatch => {
-    axios
-        .post('', user) //add endpoint 
-        .then(res => {
-            console.log(res.data);
-            dispatch({ type: EDIT_USER, payload: res.data})
-    })
-    .catch(err => {
-        console.log(err);
-    });
-};
+// export const editUser = (userId) => dispatch => {
+//     axiosWithAuth()
+//         .put('https://water-plants-matt.herokuapp.com/api/user/:id', userId) //add endpoint 
+//         .then(res => {
+//             console.log(res.data);
+//             dispatch({ type: EDIT_USER, payload: res.data})
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     });
+// };
 
 export const logOut = () => dispatch => {
     // axios
