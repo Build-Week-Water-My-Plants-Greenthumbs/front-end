@@ -74,14 +74,20 @@ export const toggleEdit = () => dispatch => {
 
 export const createPlant = (data) => dispatch => {
     axiosWithAuth()
-    .post("", data) //add endpoint
-    .then(res => dispatch({ type: CREATE_PLANT, payload: res.data }))
+    .post("https://water-plants-matt.herokuapp.com/api/plants", data) //add endpoint
+    .then(res => {
+        console.log(res)
+        dispatch({ type: CREATE_PLANT, payload: res.data })
+    })
     .catch(err => console.log(err))
 }
 
 export const fetchPlant = (id) => dispatch => {
-    axiosWithAuth()
+    axios
     .get(`https://water-plants-matt.herokuapp.com/api/plants/${id}`) // endpoint to get plant by id
-    .then(res => dispatch({ type: FETCH_PLANTS, payload: res.data }))
+    .then(res => {
+        console.log(res.data);
+        dispatch({type: FETCH_PLANTS, payload: res.data})
+    })
     .catch(err => console.log(err))
 }
