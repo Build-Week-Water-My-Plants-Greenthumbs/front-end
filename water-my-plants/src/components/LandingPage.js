@@ -1,14 +1,15 @@
 import React from "react";
+import { connect } from 'react-redux';
 import { Link, useParams } from "react-router-dom";
 import { plantData } from "../dummyData";
 import PlantListItem from './PlantListItem'
 
-const LandingPage = () => {
+const LandingPage = (props) => {
   const { id } = useParams();
   console.log(plantData);
   return (
     <div>
-      <h3>Username goes here...</h3>
+      <h3>{props.username}</h3>
       <Link to='/add-plant'><button>Add New Plant</button></Link>
 
       {plantData.map((plant) => {
@@ -24,4 +25,10 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+const mapStateToProps = state => {
+  return {
+    username: state.user.username
+  }
+}
+
+export default connect(mapStateToProps)(LandingPage);

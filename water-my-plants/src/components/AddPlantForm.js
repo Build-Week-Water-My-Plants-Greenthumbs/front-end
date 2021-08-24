@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-
+import { createPlant } from '../actions'
+import { connect } from 'react-redux';
 const AddPlantForm = () => {
   const { push } = useHistory();
   const [plant, setPlant] = useState({ // local state for changes
@@ -16,7 +17,7 @@ const AddPlantForm = () => {
   }
   const handleSubmit = (e) => {
       e.preventDefault();
-      //action here
+      createPlant(plant)
       push('/dashboard')
   }
 
@@ -38,4 +39,4 @@ const AddPlantForm = () => {
   )
 } 
 
-export default AddPlantForm
+export default connect(null,{ createPlant })(AddPlantForm)
