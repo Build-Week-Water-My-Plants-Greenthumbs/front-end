@@ -20,7 +20,7 @@ import { useHistory } from 'react-router-dom';
   // updating form data
   const handleSubmit = e => {
     e.preventDefault();
-    axios().post(`/api/users/${id}`, plantToEdit)
+    axios().post(`${id}`, plantToEdit)
       .then(res => {
         console.log('post: ', res.data)
         setPlantToEdit(res.data)
@@ -41,7 +41,6 @@ import { useHistory } from 'react-router-dom';
 
   return(
     <div>
-      <Nav/>
         <form className="add-plant-form" onSubmit={handleSubmit}>
         <h1 className="add-plant-header">Edit Your Plant</h1>
         <div className="input-container">
@@ -73,7 +72,6 @@ import { useHistory } from 'react-router-dom';
             <button className="add-plant-form-button submit-btn" type="submit">Update Plant</button>            
             <Link to={`/plant/${id}`}></Link>
               <button className="add-plant-form-button reset-btn">Cancel</button>
-            </Link>
           </div>
           </div>
         </form>

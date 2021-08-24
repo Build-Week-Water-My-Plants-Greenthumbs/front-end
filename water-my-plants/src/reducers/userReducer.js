@@ -1,15 +1,17 @@
-import { CREATE_USER, SIGNUP_FAIL, LOGIN_USER, LOGIN_FAIL, EDIT_USER } from "../actions";
+import { CREATE_USER, SIGNUP_FAIL, 
+    LOGIN_USER, LOGIN_FAIL, EDIT_USER, LOG_OUT } from "../actions";
 
 const INITIAL_STATE = {
     signedUp: false,
     signUpFail: '',
     loggedIn: false,
     logInFail: '',
+    edited: false,
+    editFail: '',
     user: {
     id: '',
+    phone: '',
     username: '',
-    phoneNumber: '',
-    password: ''
     }
 };
 
@@ -37,6 +39,13 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 logInFail: action.payload
             }
+        case EDIT_USER:
+            return {
+                ...state,
+                user: action.payload
+            }
+        case LOG_OUT:
+            return INITIAL_STATE;
         default:
             return state;
     }
