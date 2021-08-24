@@ -32,7 +32,7 @@ import { editUser } from '../actions';
     };
 
     useEffect(() => {
-        setFormData(props.user)
+        setFormData(user)
     }, [])
 
     
