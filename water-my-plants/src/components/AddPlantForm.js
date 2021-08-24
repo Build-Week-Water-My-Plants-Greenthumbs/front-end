@@ -7,7 +7,6 @@ import { axiosWithAuth } from "../helpers/axiosWithAuth";
 const AddPlantForm = (props) => {
   const { push } = useHistory();
   const [plant, setPlant] = useState({ // local state for changes
-    plantId: '',
     name: '',
     nickname: '',
     species: '',
