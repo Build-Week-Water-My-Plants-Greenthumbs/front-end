@@ -12,6 +12,7 @@ export const EDIT_PLANT = "EDIT_PLANT";
 export const WATER = "WATER";
 export const FETCH_PLANTS = "FETCH_PLANTS"
 export const TOGGLE_EDIT= "TOGGLE_EDIT"
+export const FETCH_PLANT_LIST = "FETCH_PLANT_LIST"
 
 
 export const createUser = (user) => dispatch => {
@@ -83,11 +84,21 @@ export const createPlant = (data) => dispatch => {
 }
 
 export const fetchPlant = (id) => dispatch => {
-    axios
+    axiosWithAuth()
     .get(`https://water-plants-matt.herokuapp.com/api/plants/${id}`) // endpoint to get plant by id
     .then(res => {
         console.log(res.data);
         dispatch({type: FETCH_PLANTS, payload: res.data})
+    })
+    .catch(err => console.log(err))
+}
+
+export const fetchPlantList = () => dispatch => {
+    axiosWithAuth()
+    .get("https://water-plants-matt.herokuapp.com/api/plants")
+    .then(res => {
+        
+        dispatch({type: FETCH_PLANT_LIST, payload: res.data})
     })
     .catch(err => console.log(err))
 }
