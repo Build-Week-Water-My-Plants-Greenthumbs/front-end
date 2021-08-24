@@ -74,11 +74,12 @@ export const toggleEdit = () => dispatch => {
 
 
 
-export const createPlant = (data) => dispatch => {
+export const plantCreater = (data) => dispatch => {
+    console.log('CLICK IN ACTION')
     axiosWithAuth()
     .post("https://water-plants-matt.herokuapp.com/api/plants", data) //add endpoint
     .then(res => {
-        console.log(res)
+        
         dispatch({ type: CREATE_PLANT, payload: res.data })
     })
     .catch(err => console.log(err))

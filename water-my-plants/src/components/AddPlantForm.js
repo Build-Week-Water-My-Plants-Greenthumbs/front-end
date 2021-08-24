@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { createPlant } from '../actions'
+import { plantCreater } from '../actions'
 import { connect } from 'react-redux';
-const AddPlantForm = () => {
+import axios from "axios";
+import { axiosWithAuth } from "../helpers/axiosWithAuth";
+const AddPlantForm = (props) => {
   const { push } = useHistory();
   const [plant, setPlant] = useState({ // local state for changes
-    id: "",
-    nickname: "",
-    species: "",
-    h2oFrequency: "",
+    plantId: '',
+    name: '',
+    nickname: '',
+    species: '',
+    frequency: '',
   });
   const handleChange = (e) => {
       setPlant({
@@ -17,13 +20,24 @@ const AddPlantForm = () => {
   }
   const handleSubmit = (e) => {
       e.preventDefault();
-      createPlant(plant)
-      push('/dashboard')
+    //   axiosWithAuth()
+    //   .post("https://water-plants-matt.herokuapp.com/api/plants", plant)
+    //   .then(res => {
+    //       console.log(res)
+    //       push('/dashboard')
+    //     })
+    //   .catch(err => console.log(err))
+    console.log(plant)
+    props.plantCreater(plant)
+      
   }
 
   return (
       <div>
           <form onSubmit={handleSubmit}>
+          <label htmlFor='name'>
+                  <input type='text' name='name' placeholder='Enter name' value={plant.name} onChange={handleChange}/>
+              </label>
               <label htmlFor='nickname'>
                   <input type='text' name='nickname' placeholder='Enter nickname' value={plant.nickname} onChange={handleChange}/>
               </label>
@@ -31,7 +45,7 @@ const AddPlantForm = () => {
                   <input type='text' name='species' placeholder='Enter species' value={plant.species} onChange={handleChange}/>
               </label>
               <label htmlFor='h2oFrequency'>
-                  <input type='text' name='h2oFrequency' placeholder='Enter h2oFrequency' value={plant.h2oFrequency} onChange={handleChange}/>
+                  <input type='text' name='frequency' placeholder='Enter h2oFrequency' value={plant.frequency} onChange={handleChange}/>
               </label>
               <button>Submit</button>
           </form>
@@ -39,5 +53,10 @@ const AddPlantForm = () => {
       </div>
   )
 } 
+const mapStateToProps = (state) => {
+    return {
+        plant: state.plant,
+    }
+}
 
-export default connect(null,{ createPlant })(AddPlantForm)
+export default connect(mapStateToProps,{ plantCreater })(AddPlantForm)
