@@ -1,14 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from 'react-redux';
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PlantListItem from './PlantListItem'
 import { fetchPlantList } from '../actions'
-import { plantData } from '../dummyData'
 
 const LandingPage = (props) => {
   useEffect(() => {
     props.fetchPlantList()
-    console.log(props.plant.plantsList)
   },[])
   return (
     <div>
@@ -17,7 +15,7 @@ const LandingPage = (props) => {
 
       {props.plant.plantsList.map((plant) => {
         return (
-          <div key={plant.id}>
+          <div key={plant.plantId}>
             <Link className='Links' to={`/plant/${plant.plantId}`}>
               <PlantListItem plant={plant}/>
             </Link>
@@ -30,7 +28,7 @@ const LandingPage = (props) => {
 
 const mapStateToProps = state => {
   return {
-    username: state.user.username,
+    username: state.user.user.username,
     plant: state.plant
   }
 }
