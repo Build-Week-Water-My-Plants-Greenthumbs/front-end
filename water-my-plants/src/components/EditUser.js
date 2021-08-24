@@ -2,35 +2,58 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { editUser } from '../actions';
-import UserForm from './UserForm';
+
 
  const EditUser = (props) => {
-    const [formData, setFormData] = useState(user)
+    const [formData, setFormData] = useState({})
     const history = useHistory();
-    const { success, user, error } = props;
+    const { success, user, error, editUser } = props;
+
+    
 
     useEffect(() => {
-        success && history.push('/dashboard')
+        success && history.push('/dashboard');
     }, [success])
 
-    const onChange = e => {
+    const onInputChange = e => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value});
     };
 
+    const handleCancel = () => {
+        history.push('/dashboard');
+    }
+
     const handleSubmit = e => {
         e.preventDefault();
+        console.log(formData);
         editUser(formData)
-    }
+    };
+
+    useEffect(() => {
+        setFormData(user)
+    }, [])
+
+    
 
     return (
         <div>
+            <h2>Edit User Info</h2>
             <form onSubmit={handleSubmit}>
-            <UserForm onChange={onChange} formData={formData} />
+                <label className="edit-label" htmlFor="phone"> Phone Number:</label>
+                            <input className="edit-input"
+                                onChange={onInputChange}
+                                name="phone"
+                                id="phone"
+                                type="text"
+                                value={formData.phone}
+                            /> 
             { error && <p>{error}</p>} 
-            <button>Submit Changes</button>
+            
+            <button type='submit'>Submit Changes</button>
             </form>
+            <button onClick={handleCancel}>Cancel</button>
         </div>
     )
 }

@@ -36,7 +36,7 @@ export const loginUser = (credentials) => dispatch => {
         .then(res => {
             console.log(res.data); //need to change line 15 & 16 on how res looks once receiving from backend
             localStorage.setItem('token', res.data.token)
-            dispatch({ type: LOGIN_USER, payload: res.data })
+            dispatch({ type: LOGIN_USER, payload: res.data.loggedUser })
         })
         .catch(err => {
             console.log(err)
@@ -45,8 +45,9 @@ export const loginUser = (credentials) => dispatch => {
 };
 
 export const editUser = (user) => dispatch => {
-    axios
-        .post('', user) //add endpoint 
+    console.log('editUser action called', user);
+    axiosWithAuth()
+        .put(`/api/user/${user.userId}`, user) //add endpoint 
         .then(res => {
             console.log(res.data);
             dispatch({ type: EDIT_USER, payload: res.data})

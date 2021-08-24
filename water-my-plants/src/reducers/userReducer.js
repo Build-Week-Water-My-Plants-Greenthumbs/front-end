@@ -21,6 +21,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 signedUp: true,
+                signUpFail: false,
                 user: action.payload
             }
         case SIGNUP_FAIL:
@@ -32,6 +33,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 loggedIn: true,
+                logInFail: false,
                 user: action.payload
             }
         case LOGIN_FAIL:
