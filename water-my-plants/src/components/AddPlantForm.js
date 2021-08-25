@@ -39,6 +39,7 @@ const AddPlantForm = (props) => {
   return (
       <div className="edit_plant">
           <form onSubmit={handleSubmit}>
+              <div>
 
           <label htmlFor='name'>
                   <input type='text' name='name' placeholder='Enter name' value={plantForm.name} onChange={handleChange}/>
@@ -59,9 +60,10 @@ const AddPlantForm = (props) => {
           </form>
           <div className="cancel_button">   
           <button onClick={() => push('/dashboard')}>Cancel</button>
-          </ div>
+          </div>
       </div>
-  )
+  );
+  
 } 
 
 
