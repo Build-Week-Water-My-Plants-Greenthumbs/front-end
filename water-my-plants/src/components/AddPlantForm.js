@@ -26,10 +26,6 @@ const AddPlantForm = (props) => {
   };
 
   const handleSubmit = (e) => {
-    // setPlantForm({
-    //     ...plantForm,
-    //     frequency: parseInt(plantForm.frequency)
-    // })
     e.preventDefault();
     console.log(plantForm)
     props.plantCreater(plantForm)
