@@ -22,8 +22,9 @@ const AddPlantForm = () => {
   }
 
   return (
-      <div>
+      <div className="edit_plant">
           <form onSubmit={handleSubmit}>
+              <div className="edit_plant_form">
               <label htmlFor='nickname'>
                   <input type='text' name='nickname' placeholder='Enter nickname' value={plant.nickname} onChange={handleChange}/>
               </label>
@@ -33,9 +34,14 @@ const AddPlantForm = () => {
               <label htmlFor='h2oFrequency'>
                   <input type='text' name='h2oFrequency' placeholder='Enter h2oFrequency' value={plant.h2oFrequency} onChange={handleChange}/>
               </label>
+              </ div>
+              <div className="submit_button">
               <button>Submit</button>
+              </ div>
           </form>
+          <div className="cancel_button">   
           <button onClick={() => push('/dashboard')}>Cancel</button>
+          </ div>
       </div>
   )
 } 
