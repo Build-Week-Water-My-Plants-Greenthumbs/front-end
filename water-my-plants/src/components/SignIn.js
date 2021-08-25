@@ -46,6 +46,8 @@ const SignIn = (props) => {
     return (
         <>
             <div className="sign-in-img-container">
+                {/* <img className="sign-in-image"
+                    /> */}
                 <section className="sign-in-container">
                     <form className="sign-in-form" onSubmit={handleSubmit}>
                         <h2 className='sign-in-title'>Sign in</h2>
@@ -71,7 +73,6 @@ const SignIn = (props) => {
                                onChange={change}
                         />
                         <p className="error">{errors.password}</p>
-                        
                         
                         <Link id='signUpLink' to="/sign-up">
                             Need an account? <span className='sign-up-cta'>Sign-up</span>

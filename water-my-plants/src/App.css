@@ -1,16 +1,112 @@
 .App {
   text-align: center;
+  font-family: 'Alice', serif;
+}
+
+.headline {
+  border:1px green;
+  text-decoration: underline;
+  font-size: 1.2em;
+}
+
+
+.header-section {
+background-color: #f5f5f5;
+  margin: 40px;
+  padding:10px;
+ border:1px green;
+ 
+}
+
+.bg_img{
+  background-image:"../images/cactus.jpg";
+}
+.nav-content {
+  display: flex;
+  justify-content: flex-end;;
+  align-items: left;
+}
+
+features-section {
+  background-color: #f5f5f5;
+  margin: 40px;
+  padding:10px;
+
+
+}
+
+.feature-icons {
+   line-height: 40px;
+   background-color: #f5f5f5;
+   margin: 40px;
+   padding:10px;
+}
+
+.content {
+  margin: 40px;
+  padding:10px;
+  background-color: #f5f5f5;
+}
+
+.content1 {
+  margin: 60px;
+  padding:10px;
+  background-color: #f5f5f5;
+}
+
+.icons {
+  /* line-height: 40px; */
+
+  margin: auto;
+ 
+  padding:20px;
+
+
+}
+.contact_section{
+  background-color: #f5f5f5;
+  margin: 40px;
+  padding: 10px;
+  justify-content: center;
+ 
+}
+
+.actions{
+justify-content: center;
+}
+
+#signUpLink {
+  color: #13985e;
+  text-decoration: underline;
+  margin:15px;
+}
+#signUpLink :hover{
+  color:rgb(143, 161, 26);
+  text-decoration: underline;
+}
+
+.edit_plant{
+  background-color: #f5f5f5;
+  margin: 40px;
+  padding: 40px;
+  height:50px;
+  border: 2px solid;
+ 
+
+}
+
+.cancel_button{
+  margin:20px;
+  
 }
 
 
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* .submit_button{
+  
+} */
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -19,9 +115,9 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
-.Links{
+/* .Links{
   text-decoration: none;
   color: black;
   cursor: pointer;
@@ -29,4 +125,4 @@
 
 img {
   width: 150px;
-}
+} */

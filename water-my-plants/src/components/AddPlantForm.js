@@ -37,8 +37,9 @@ const AddPlantForm = (props) => {
   }
 
   return (
-      <div>
+      <div className="edit_plant">
           <form onSubmit={handleSubmit}>
+
           <label htmlFor='name'>
                   <input type='text' name='name' placeholder='Enter name' value={plantForm.name} onChange={handleChange}/>
               </label>
@@ -51,9 +52,14 @@ const AddPlantForm = (props) => {
               <label>Days Between Watering:
                   <input type='number' name='frequency' placeholder='Enter h2oFrequency' value={plantForm.frequency} onChange={handleChangeInt}/>
               </label>
+              </ div>
+              <div className="submit_button">
               <button>Submit</button>
+              </ div>
           </form>
+          <div className="cancel_button">   
           <button onClick={() => push('/dashboard')}>Cancel</button>
+          </ div>
       </div>
   )
 } 
