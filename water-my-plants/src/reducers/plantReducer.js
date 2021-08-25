@@ -5,7 +5,7 @@ const INITIAL_STATE = {
       plantId: '',
       nickname: '',
       species: '',
-      frequency: '',
+      frequency: 0,
       lastWatered: '',
       
     },
