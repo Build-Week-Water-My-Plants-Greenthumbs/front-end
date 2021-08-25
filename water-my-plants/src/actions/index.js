@@ -47,7 +47,7 @@ export const loginUser = (credentials) => dispatch => {
 export const editUser = (user) => dispatch => {
     console.log('editUser action called', user);
     axiosWithAuth()
-        .put(`/api/user/${user.userId}`, user) //add endpoint 
+        .put(`/api/users/${user.userId}`, user) //add endpoint 
         .then(res => {
             console.log(res.data);
             dispatch({ type: EDIT_USER, payload: res.data})
@@ -75,9 +75,9 @@ export const toggleEdit = () => dispatch => {
 
 
 export const plantCreater = (data) => dispatch => {
-    console.log('CLICK IN ACTION')
+    console.log('CLICK IN ACTION', data)
     axiosWithAuth()
-    .post("https://water-plants-matt.herokuapp.com/api/plants", data) //add endpoint
+    .post("/api/plants", data) //add endpoint
     .then(res => {
         
         dispatch({ type: CREATE_PLANT, payload: res.data })
