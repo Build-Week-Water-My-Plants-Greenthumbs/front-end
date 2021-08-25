@@ -1,5 +1,7 @@
 import { CREATE_USER, SIGNUP_FAIL, 
-    LOGIN_USER, LOGIN_FAIL, EDIT_USER, LOG_OUT } from "../actions";
+    LOGIN_USER, LOGIN_FAIL, EDIT_USER,
+    LOG_OUT, 
+    AUTH_USER} from "../actions";
 
 const INITIAL_STATE = {
     signedUp: false,
@@ -8,8 +10,9 @@ const INITIAL_STATE = {
     logInFail: '',
     edited: false,
     editFail: '',
+    token: '',
     user: {
-    id: '',
+    userId: '',
     phone: '',
     username: '',
     }
@@ -34,12 +37,21 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 loggedIn: true,
                 logInFail: false,
-                user: action.payload
+                token: action.payload.token,
+                user: action.payload.loggedUser
             }
         case LOGIN_FAIL:
             return {
                 ...state,
                 logInFail: action.payload
+            }
+        case AUTH_USER:
+            return {
+                ...state,
+                loggedIn: true,
+                userId: localStorage.getItem('userId'),
+                username: localStorage.getItem('username'),
+                token: localStorage.getItem('token')
             }
         case EDIT_USER:
             return {

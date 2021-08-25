@@ -2,18 +2,25 @@ import React, { useEffect } from "react";
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import PlantListItem from './PlantListItem'
-import { fetchPlantList } from '../actions'
+import { fetchPlantList, authUser } from '../actions'
 
 const LandingPage = (props) => {
+
+  const { username, fetchPlantList, plant, loggedIn, authUser } = props;
+
   useEffect(() => {
-    props.fetchPlantList()
-  },[])
+    if(!loggedIn && localStorage.getItem('token')) {
+      authUser();
+    };
+    fetchPlantList();
+  },[]);
+
   return (
     <div>
-      <h3>{props.username}</h3>
+      <h3>{username}</h3>
       <Link to='/add-plant'><button>Add New Plant</button></Link>
 
-      {props.plant.plantsList.map((plant) => {
+      {plant.plantsList.map((plant) => {
         return (
           <div key={plant.plantId}>
             <Link className='Links' to={`/plant/${plant.plantId}`}>
@@ -29,8 +36,9 @@ const LandingPage = (props) => {
 const mapStateToProps = state => {
   return {
     username: state.user.user.username,
+    loggedIn: state.user.loggedIn,
     plant: state.plant
   }
 }
 
-export default connect(mapStateToProps,{ fetchPlantList })(LandingPage);
+export default connect(mapStateToProps,{ fetchPlantList, authUser })(LandingPage);

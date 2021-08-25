@@ -5,6 +5,7 @@ export const CREATE_USER = "CREATE_USER";
 export const SIGNUP_FAIL = "SIGNUP_FAIL";
 export const LOGIN_USER = "LOGIN_USER";
 export const LOGIN_FAIL = "LOGIN_FAIL";
+export const AUTH_USER = "AUTH_USER";
 export const EDIT_USER = "EDIT_USER";
 export const LOG_OUT = "LOG_OUT";
 export const CREATE_PLANT = "CREATE_PLANT";
@@ -13,6 +14,7 @@ export const WATER = "WATER";
 export const FETCH_PLANTS = "FETCH_PLANTS"
 export const TOGGLE_EDIT= "TOGGLE_EDIT"
 export const FETCH_PLANT_LIST = "FETCH_PLANT_LIST"
+
 
 
 export const createUser = (user) => dispatch => {
@@ -32,16 +34,21 @@ export const createUser = (user) => dispatch => {
 export const loginUser = (credentials) => dispatch => {
     console.log(credentials);
     axios
-        .post('https://water-plants-matt.herokuapp.com/api/auth/login', credentials) //api should return 20 minute token for now
+        .post('https://water-plants-matt.herokuapp.com/api/auth/login', credentials) 
         .then(res => {
-            console.log(res.data); //need to change line 15 & 16 on how res looks once receiving from backend
             localStorage.setItem('token', res.data.token)
-            dispatch({ type: LOGIN_USER, payload: res.data.loggedUser })
+            localStorage.setItem('userId', res.data.loggedUser.userId)
+            localStorage.setItem('username', res.data.loggedUser.username)
+            dispatch({ type: LOGIN_USER, payload: res.data })
         })
         .catch(err => {
             console.log(err)
             dispatch({ type: LOGIN_FAIL, payload: "invalid credentials, please verify username and password and try again."})
         });
+};
+
+export const authUser = () => {
+    return({ type: AUTH_USER })
 };
 
 export const editUser = (user) => dispatch => {
@@ -57,14 +64,10 @@ export const editUser = (user) => dispatch => {
     });
 };
 
-export const logOut = () => dispatch => {
-    // axios
-    //     .post('') //add endpoint
-    //     .then(res => {
+export const logOut = () => {
         console.log('logging out');
-            dispatch({ type: LOG_OUT })
-    //     })
-    // .catch(err => console.log(err));
+        return({ type: LOG_OUT })
+   
 };
 
 export const toggleEdit = () => dispatch => {
