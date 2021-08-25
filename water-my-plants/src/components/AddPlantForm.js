@@ -1,38 +1,56 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { createPlant } from '../actions'
+import { plantCreater } from '../actions'
 import { connect } from 'react-redux';
-const AddPlantForm = () => {
+
+const AddPlantForm = (props) => {
   const { push } = useHistory();
-  const [plant, setPlant] = useState({ // local state for changes
-    id: "",
-    nickname: "",
-    species: "",
-    h2oFrequency: "",
+  const [plantForm, setPlantForm] = useState({ // local state for changes
+    name: '',
+    nickname: '',
+    species: '',
+    frequency: 3,
   });
+
   const handleChange = (e) => {
-      setPlant({
-          ...plant, [e.target.name]: e.target.value
+      setPlantForm({
+          ...plantForm, [e.target.name]: e.target.value
       })
   }
+
+  const handleChangeInt = (e) => {
+      setPlantForm({
+          ...plantForm,
+          frequency: parseInt(e.target.value) 
+      })
+  };
+
   const handleSubmit = (e) => {
-      e.preventDefault();
-      createPlant(plant)
-      push('/dashboard')
+    // setPlantForm({
+    //     ...plantForm,
+    //     frequency: parseInt(plantForm.frequency)
+    // })
+    e.preventDefault();
+    console.log(plantForm)
+    props.plantCreater(plantForm)
+      
   }
 
   return (
       <div className="edit_plant">
           <form onSubmit={handleSubmit}>
-              <div className="edit_plant_form">
+
+          <label htmlFor='name'>
+                  <input type='text' name='name' placeholder='Enter name' value={plantForm.name} onChange={handleChange}/>
+              </label>
               <label htmlFor='nickname'>
-                  <input type='text' name='nickname' placeholder='Enter nickname' value={plant.nickname} onChange={handleChange}/>
+                  <input type='text' name='nickname' placeholder='Enter nickname' value={plantForm.nickname} onChange={handleChange}/>
               </label>
               <label htmlFor='species'>
-                  <input type='text' name='species' placeholder='Enter species' value={plant.species} onChange={handleChange}/>
+                  <input type='text' name='species' placeholder='Enter species' value={plantForm.species} onChange={handleChange}/>
               </label>
-              <label htmlFor='h2oFrequency'>
-                  <input type='text' name='h2oFrequency' placeholder='Enter h2oFrequency' value={plant.h2oFrequency} onChange={handleChange}/>
+              <label>Days Between Watering:
+                  <input type='number' name='frequency' placeholder='Enter h2oFrequency' value={plantForm.frequency} onChange={handleChangeInt}/>
               </label>
               </ div>
               <div className="submit_button">
@@ -46,4 +64,5 @@ const AddPlantForm = () => {
   )
 } 
 
-export default connect(null,{ createPlant })(AddPlantForm)
+
+export default connect(null, { plantCreater })(AddPlantForm)

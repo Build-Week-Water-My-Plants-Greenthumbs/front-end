@@ -1,11 +1,11 @@
-import { CREATE_PLANT, EDIT_PLANT, FETCH_PLANTS, TOGGLE_EDIT, FETCH_PLANT_LIST, WATER } from "../actions";
+import { CREATE_PLANT, EDIT_PLANT, FETCH_PLANTS, TOGGLE_EDIT, FETCH_PLANT_LIST } from "../actions";
 const INITIAL_STATE = {
   plantsList: [],
     plant: {
       plantId: '',
       nickname: '',
       species: '',
-      frequency: '',
+      frequency: 0,
       lastWatered: '',
       
     },
