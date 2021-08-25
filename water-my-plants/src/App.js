@@ -1,6 +1,5 @@
 import React from "react";
 import { Route } from "react-router-dom";
-
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import AddPlantForm from "./components/AddPlantForm.js";
@@ -15,14 +14,20 @@ import PrivateRoute from './components/PrivateRoute'
 function App() {
   return (
     <div className="App">
+      <div className="header-section">
       <header>
-        <h1>Water My Plants</h1>
-        <NavBar />
-        <p>
+        <div className="nav-content">
+      <NavBar />
+      </div>
+      <div className="headline">  
+        <h1> Water My Plants </h1>
+       </div>
+        <h2>
           Never forget when it's time to feed your foliage and quench your
           plants' thirst.
-        </p>
+        </h2>
       </header>
+      </div>
       <PrivateRoute path="/edit" component={EditUser} />
       <Route exact path="/signIn" component={SignIn} />
       <Route path="/sign-up" component={SignUp} />
