@@ -34,17 +34,24 @@ const SignUp = (props) => {
     }
 
     return (
-        <>
+ <>
             <div className="sign-up-img-container">
                 <div className='sign-up-container'>
                 <h2 className="sign-up-title">Sign up</h2>
+                
                 <form className="sign-up-form" onSubmit={handleSubmit}>
                     <UserForm onInputChange = {onInputChange} formData = {formData} />
                 { error && <p>{error}</p>} 
-                    <Link id='signInLink' to="/signIn">
+          
+
+                <button className='sign-up-btn' > Register</button>
+          <div className="sign-up-link">
+                    <Link id='signUpLink' to="/signIn">
                         Already a user? <span className='sign-in-cta'>Sign-in!</span>
                     </Link>
-                    <button className='sign-up-btn' > Register</button>
+                    </div>
+                 
+                   
                 </form>
                 </div>
                 {/* <img className="sign-in-image"/> */}
