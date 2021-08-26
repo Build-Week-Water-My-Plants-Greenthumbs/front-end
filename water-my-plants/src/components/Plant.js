@@ -24,7 +24,7 @@ const Plant = (props) => {
     }
     
   return (
-      <div>
+      <div className="plant_container">
          <h4>{props.plant.plant.nickname}</h4>
          <p>{props.plant.plant.description}</p>
          <img src={props.plant.plant.image} alt='plant-pic'/>

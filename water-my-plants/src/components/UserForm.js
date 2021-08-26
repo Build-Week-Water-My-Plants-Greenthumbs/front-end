@@ -6,29 +6,33 @@ const UserForm = (props) => {
 
     return (
         <div>
-                    <label className="sign-up-label" htmlFor="username">Username:</label>
+               
+                    <label className="sign-up-label" htmlFor="username"></label>
                     <input className="sign-up-input"
                            onChange={onInputChange}
                            name="username"
-                           placeholder="name, please"
+                           placeholder="User Name"
                            id="username"
                            type="text"
                            value={formData.username}
+                           
                     />
-                    <label className="sign-up-label" htmlFor="phone"> Phone Number:</label>
+                    <div className="sign-up-style">
+                    <label className="sign-up-label" htmlFor="phone"> </label>
                         <input className="sign-up-input"
                                onChange={onInputChange}
                                name="phone"
-                               placeholder="telephone number, please"
+                               placeholder="Telephone Number"
                                id="phone_number"
                                type="text"
                                value={formData.phone}
                         />  
-                    <label className="sign-up-label" htmlFor="password">Password:</label>
+                        </div>
+                    <label className="sign-up-label" htmlFor="password"></label>
                         <input className="sign-up-input"
                                onChange={onInputChange}
                                name="password"
-                               placeholder="password"
+                               placeholder="Password"
                                id="password"
                                type="password"
                                value={formData.password}

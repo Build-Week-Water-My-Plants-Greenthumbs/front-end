@@ -23,10 +23,10 @@ const Home = () => {
       <section>
        
         <div className="content">
-          <p>
+          <h3>
             <strong>Water My Plants</strong> is a brand new app that will simplify the plant watering process for you, so that you can focus 
             on keeping yourself alive.
-          </p>
+          </h3>
           <div className="feature-icons">
           <ul>
             <li className="fa fa-heart-o"> Keep Plants Healthy</li>
@@ -40,18 +40,18 @@ const Home = () => {
             <li className="fa fa-file-excel-o"> Less Thinking</li>
             </ul>
             </div>
-          <p>
+          <h3>
            <strong> Water My Plants</strong> is where nature and technology meet to keep you and your plants happy and healthy.
-          </p>
+          </h3>
         </div>
       </section>
 
       <section>
        
         <div className="content1">
-          <p>
+          <h2>
             <strong>Healthy Plants</strong> are plants that are in good health. Are your plants in good health?
-          </p>
+          </h2>
 
         </div>
       
