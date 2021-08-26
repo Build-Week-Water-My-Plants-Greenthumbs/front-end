@@ -1,6 +1,6 @@
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+
 export const CREATE_USER = "CREATE_USER";
 export const SIGNUP_FAIL = "SIGNUP_FAIL";
 export const LOGIN_USER = "LOGIN_USER";
@@ -10,10 +10,13 @@ export const EDIT_USER = "EDIT_USER";
 export const LOG_OUT = "LOG_OUT";
 export const CREATE_PLANT = "CREATE_PLANT";
 export const EDIT_PLANT = "EDIT_PLANT";
+export const DELETE_PLANT = "DELETE_PLANT"
 export const WATER = "WATER";
 export const FETCH_PLANTS = "FETCH_PLANTS"
 export const TOGGLE_EDIT= "TOGGLE_EDIT"
 export const FETCH_PLANT_LIST = "FETCH_PLANT_LIST"
+
+
 
 
 
@@ -86,7 +89,16 @@ export const plantCreater = (data) => dispatch => {
     .then(res => {
         
         dispatch({ type: CREATE_PLANT, payload: res.data })
+        
     })
+    .catch(err => console.log(err))
+}
+
+export const deletePlant = (id) => dispatch => {
+    console.log("DELETE REQ")
+    axiosWithAuth()
+    .delete(`/api/plants/${id}`)
+    .then(res => console.log(res))
     .catch(err => console.log(err))
 }
 

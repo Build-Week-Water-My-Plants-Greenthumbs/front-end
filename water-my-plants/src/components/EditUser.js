@@ -38,7 +38,7 @@ import { editUser } from '../actions';
     
 
     return (
-        <div>
+        <div className="edit-user-form">
             <h2>Edit User Info</h2>
             <form onSubmit={handleSubmit}>
                 <label className="edit-label" htmlFor="phone"> Phone Number:</label>
