@@ -77,7 +77,9 @@ export const toggleEdit = () => dispatch => {
     dispatch({ type: TOGGLE_EDIT })
 }
 
-
+export const waterPlant = (lastWateredTime) => {
+    return ({ type: WATER, payload: lastWateredTime });
+};
 
 
 export const plantCreater = (data) => dispatch => {

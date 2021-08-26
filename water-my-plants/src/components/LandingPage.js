@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import PlantListItem from './PlantListItem'
+import WaterTime from "./WaterTime";
 import { fetchPlantList, authUser } from '../actions'
 
 const LandingPage = (props) => {
@@ -26,6 +27,7 @@ const LandingPage = (props) => {
             <Link className='Links' to={`/plant/${plant.plantId}`}>
               <PlantListItem plant={plant}/>
             </Link>
+            <WaterTime frequency = {plant.frequency} lastWatered = {plant.lastWatered} />
           </div>
         );
       })}

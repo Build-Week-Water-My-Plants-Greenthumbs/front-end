@@ -77,7 +77,7 @@ const SignIn = (props) => {
                             Need an account? <span className='sign-up-cta'>Sign-up</span>
                         </Link>
                         <button className="sign-in-btn" >
-                            Sign In
+                            Submit
                         </button>
                         {error && <p>{error}</p>} 
                     </form>
