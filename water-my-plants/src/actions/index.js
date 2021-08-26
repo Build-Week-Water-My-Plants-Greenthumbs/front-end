@@ -78,6 +78,7 @@ export const toggleEdit = () => dispatch => {
 }
 
 export const waterPlant = (lastWateredTime) => {
+    console.log(lastWateredTime);
     return ({ type: WATER, payload: lastWateredTime });
 };
 

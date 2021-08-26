@@ -31,7 +31,7 @@ const WaterTime = (props) => {
     const handleWatering = () => {
 
         const time = new Date();
-        waterPlant(time)
+        props.waterPlant(time)
     }
 
     useEffect(() => {
