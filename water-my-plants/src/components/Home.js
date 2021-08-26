@@ -72,10 +72,10 @@ const Home = () => {
           </p>
           <form>
             <div className="fields">
-              <div className="field half">
+              <div className="field_half">
                 <input type="text" name="name" id="name" placeholder="Name" />
               </div>
-              <div className="field half">
+              <div className="field_half">
                 <input
                   type="email"
                   name="email"
@@ -83,7 +83,7 @@ const Home = () => {
                   placeholder="Email"
                 />
               </div>
-              <div className="field">
+              <div className="field_half">
                 <textarea
                   name="message"
                   id="message"
