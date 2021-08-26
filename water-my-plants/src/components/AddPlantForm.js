@@ -29,6 +29,7 @@ const AddPlantForm = (props) => {
     e.preventDefault();
     console.log(plantForm)
     props.plantCreater(plantForm)
+    push("/dashboard")
       
   }
 
