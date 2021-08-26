@@ -1,4 +1,5 @@
-import { CREATE_PLANT, EDIT_PLANT, FETCH_PLANTS, TOGGLE_EDIT, FETCH_PLANT_LIST } from "../actions";
+import { CREATE_PLANT, EDIT_PLANT, FETCH_PLANTS, 
+  TOGGLE_EDIT, FETCH_PLANT_LIST, WATER } from "../actions";
 const INITIAL_STATE = {
   plantsList: [],
     plant: {
@@ -7,7 +8,6 @@ const INITIAL_STATE = {
       species: '',
       frequency: 0,
       lastWatered: '',
-      
     },
     editing: false
 };
@@ -19,32 +19,36 @@ const plantReducer = (state = INITIAL_STATE, action) => {
           ...state,
           plantsList: action.payload
         }
-        case FETCH_PLANTS: 
-            return {
-                ...state,
-                plant: action.payload,
-                editing: false
-            }
-        case CREATE_PLANT: 
+      case FETCH_PLANTS: 
         return {
             ...state,
             plant: action.payload,
             editing: false
         }
-
-        case EDIT_PLANT: 
-            return {
-                ...state,
-                plant: action.payload,
-                editing: true
-            }
-        case TOGGLE_EDIT: 
+      case CREATE_PLANT: 
+        return {
+            ...state,
+            plant: action.payload,
+            editing: false
+        }
+      case WATER:
+        return {
+          ...state,
+          lastWatered: action.payload
+        }
+      case EDIT_PLANT: 
+        return {
+            ...state,
+            plant: action.payload,
+            editing: true
+        }
+      case TOGGLE_EDIT: 
         return {
             ...state,
             editing: !state.ed
         }
-        default:
-            return state
+      default:
+        return state
     }
 }
 
