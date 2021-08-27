@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
  import cactus from "../images/cactus.jpg";
+ import ficus from "../images/ficus.jpg";
 
 
 const Home = () => {
@@ -15,7 +16,7 @@ const Home = () => {
         </header>
         <div className="bg_image">
           <span className="image fill" data-position="center">
-            <img src={cactus} alt="photo of cactus" width="200" height="250" />
+            <img src={cactus} alt="photo of cactus" width="50%" height="auto" />
           </span>
         </div>
       </section>
@@ -52,6 +53,11 @@ const Home = () => {
           <h2>
             <strong>Healthy Plants</strong> are plants that are in good health. Are your plants in good health?
           </h2>
+          <div className="bg_image">
+          <span className="image fill" data-position="center">
+            <img src={ficus} alt="photo of cactus" width="50%" height="auto" />
+          </span>
+        </div>
 
         </div>
       
@@ -66,10 +72,10 @@ const Home = () => {
           </p>
           <form>
             <div className="fields">
-              <div className="field half">
+              <div className="field_half">
                 <input type="text" name="name" id="name" placeholder="Name" />
               </div>
-              <div className="field half">
+              <div className="field_half">
                 <input
                   type="email"
                   name="email"
@@ -77,7 +83,7 @@ const Home = () => {
                   placeholder="Email"
                 />
               </div>
-              <div className="field">
+              <div className="field_half">
                 <textarea
                   name="message"
                   id="message"
