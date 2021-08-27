@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { plantCreater } from '../actions'
+import { plantCreater, toggleEdit, editPlant } from '../actions'
 import { connect } from 'react-redux';
 
 const AddPlantForm = (props) => {
@@ -12,7 +12,9 @@ const AddPlantForm = (props) => {
     frequency: 3,
   });
 
+
   const handleChange = (e) => {
+      console.log(props)
       setPlantForm({
           ...plantForm, [e.target.name]: e.target.value
       })
@@ -26,19 +28,26 @@ const AddPlantForm = (props) => {
   };
 
   const handleSubmit = (e) => {
+      console.log(props)
     e.preventDefault();
     console.log(plantForm)
-    props.plantCreater(plantForm)
+    if (props.editing) {
+        
+        props.editPlant(parseInt(props.id), plantForm)
+    } else {
+        props.plantCreater(plantForm)
+    }
+    
     push("/dashboard")
       
   }
 
   return (
       <div className="edit_plant">
-          <h2> Edit Your Plant</h2>
+          { props.editing ? <h2>Edit Plant</h2> : <h2>Add Plant</h2>}
           <form onSubmit={handleSubmit}>
               <div>
-<div className="add-plant-input1">
+            <div className="add-plant-input1">
           <label htmlFor='name'>
                   <input type='text' name='name' placeholder='Enter name' value={plantForm.name} onChange={handleChange}/>
               </label>
@@ -65,12 +74,19 @@ const AddPlantForm = (props) => {
               
           </form>
           <div className="cancel_button">   
-          <button onClick={() => push('/dashboard')}>Cancel</button>
+          <button onClick={() => {
+              props.toggleEdit()
+              push('/dashboard')
+          }}>Cancel</button>
           </div>
       </div>
   );
   
 } 
+const mapStateToProps = (state) => {
+    return {
+        editing: state.plant.editing
+    }
+}
 
-
-export default connect(null, { plantCreater })(AddPlantForm)
+export default connect(mapStateToProps, { plantCreater, toggleEdit,editPlant })(AddPlantForm)

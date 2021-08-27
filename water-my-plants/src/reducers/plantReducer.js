@@ -41,7 +41,7 @@ const plantReducer = (state = INITIAL_STATE, action) => {
         return {
             ...state,
             plant: action.payload,
-            editing: true
+            
         };
       case DELETE_PLANT:
       return {
@@ -52,7 +52,7 @@ const plantReducer = (state = INITIAL_STATE, action) => {
       case TOGGLE_EDIT: 
         return {
             ...state,
-            editing: !state.ed
+            editing: !state.editing
         };
       default:
         return state
