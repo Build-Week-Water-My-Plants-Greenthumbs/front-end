@@ -29,9 +29,12 @@ const Plant = (props) => {
          <p>{props.plant.plant.description}</p>
          <img src={props.plant.plant.image} alt='plant-pic'/>
          <button onClick= {handleToggle}> Edit Plant</button>
-         <button onClick={() => push('/dashboard')}>Home</button>
+         <button onClick={() => {
+             props.toggleEdit()
+             push('/dashboard')
+         }}>Home</button>
          <button onClick={handleDelete}>Delete Plant</button>
-         {props.plant.editing && <AddPlantForm plant={props.plant}/>}
+         {props.plant.editing && <AddPlantForm id={id} />}
       </div>
   );
 };

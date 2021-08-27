@@ -99,8 +99,20 @@ export const deletePlant = (id) => dispatch => {
     console.log("DELETE REQ")
     axiosWithAuth()
     .delete(`/api/plants/${id}`)
-    .then(res => console.log(res))
+    .then(res => dispatch({type: DELETE_PLANT, payload: res.data}))
     .catch(err => console.log(err))
+}
+
+export const editPlant = (id, plant) => dispatch => {
+    console.log(plant)
+    axiosWithAuth()
+    .put(`/api/plants/${id}`, plant)
+    .then(res => {
+        console.log(res)
+        dispatch({type: EDIT_PLANT, payload: res.data})
+    })
+    .catch(err => console.log(err))
+    
 }
 
 export const fetchPlant = (id) => dispatch => {
