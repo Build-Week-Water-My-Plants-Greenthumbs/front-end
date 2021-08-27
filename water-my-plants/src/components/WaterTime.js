@@ -29,7 +29,7 @@ const WaterTime = (props) => {
     };
     //call action to reset lastWatering state of plant to current timestamp
     const handleWatering = () => {
-
+        setWatered("watered")
         const time = new Date();
         props.waterPlant(time)
     }
