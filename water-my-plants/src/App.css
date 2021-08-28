@@ -7,6 +7,7 @@
   border:1px green;
   text-decoration: underline;
   font-size: 1.2em;
+  
 }
 
 
@@ -14,7 +15,7 @@
 background-color: #f5f5f5;
   margin: 40px;
   padding:10px;
- border:1px green;
+  
  
 }
 
@@ -31,6 +32,7 @@ features-section {
   padding:10px;
 
 
+
 }
 
 .feature-icons {
@@ -44,6 +46,7 @@ features-section {
   margin: 40px;
   padding:10px;
   background-color: #f5f5f5;
+
 }
 
 
@@ -66,6 +69,7 @@ content1 {
   margin: 40px;
   padding: 10px;
   justify-content: center;
+  
  
 }
 
@@ -130,7 +134,9 @@ justify-content: center;
 }
 
 .plant_container{
-  background-color: aliceblue;
+  background-color: #f5f5f5;
+  margin: 40px;
+  padding: 40px;
 }
 
 .sign-up-container {
@@ -155,4 +161,10 @@ justify-content: center;
   padding: 40px;
 }
 
+.plant-list-item{
+  background-color: #f5f5f5;
+  margin: 40px;
+  padding: 40px;
+
+}
 

@@ -9,8 +9,9 @@ const LandingPage = (props) => {
     props.fetchPlantList()
   },[])
   return (
-    <div>
-      <h3>{props.username}</h3>
+    <div className="landing_page_container">
+      <div className="landing_page"></div>
+      <h3> Welcome, {props.username}</h3>
       <Link to='/add-plant'><button>Add New Plant</button></Link>
 
       {props.plant.plantsList.map((plant) => {
@@ -19,6 +20,7 @@ const LandingPage = (props) => {
             <Link className='Links' to={`/plant/${plant.plantId}`}>
               <PlantListItem plant={plant}/>
             </Link>
+           
           </div>
         );
       })}
