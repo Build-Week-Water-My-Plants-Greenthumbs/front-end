@@ -1,18 +1,23 @@
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+
 export const CREATE_USER = "CREATE_USER";
 export const SIGNUP_FAIL = "SIGNUP_FAIL";
 export const LOGIN_USER = "LOGIN_USER";
 export const LOGIN_FAIL = "LOGIN_FAIL";
+export const AUTH_USER = "AUTH_USER";
 export const EDIT_USER = "EDIT_USER";
 export const LOG_OUT = "LOG_OUT";
 export const CREATE_PLANT = "CREATE_PLANT";
 export const EDIT_PLANT = "EDIT_PLANT";
+export const DELETE_PLANT = "DELETE_PLANT"
 export const WATER = "WATER";
 export const FETCH_PLANTS = "FETCH_PLANTS"
 export const TOGGLE_EDIT= "TOGGLE_EDIT"
 export const FETCH_PLANT_LIST = "FETCH_PLANT_LIST"
+
+
+
 
 
 export const createUser = (user) => dispatch => {
@@ -32,16 +37,21 @@ export const createUser = (user) => dispatch => {
 export const loginUser = (credentials) => dispatch => {
     console.log(credentials);
     axios
-        .post('https://water-plants-matt.herokuapp.com/api/auth/login', credentials) //api should return 20 minute token for now
+        .post('https://water-plants-matt.herokuapp.com/api/auth/login', credentials) 
         .then(res => {
-            console.log(res.data); //need to change line 15 & 16 on how res looks once receiving from backend
             localStorage.setItem('token', res.data.token)
-            dispatch({ type: LOGIN_USER, payload: res.data.loggedUser })
+            localStorage.setItem('userId', res.data.loggedUser.userId)
+            localStorage.setItem('username', res.data.loggedUser.username)
+            dispatch({ type: LOGIN_USER, payload: res.data })
         })
         .catch(err => {
             console.log(err)
             dispatch({ type: LOGIN_FAIL, payload: "invalid credentials, please verify username and password and try again."})
         });
+};
+
+export const authUser = () => {
+    return({ type: AUTH_USER })
 };
 
 export const editUser = (user) => dispatch => {
@@ -57,21 +67,20 @@ export const editUser = (user) => dispatch => {
     });
 };
 
-export const logOut = () => dispatch => {
-    // axios
-    //     .post('') //add endpoint
-    //     .then(res => {
+export const logOut = () => {
         console.log('logging out');
-            dispatch({ type: LOG_OUT })
-    //     })
-    // .catch(err => console.log(err));
+        return({ type: LOG_OUT })
+   
 };
 
 export const toggleEdit = () => dispatch => {
     dispatch({ type: TOGGLE_EDIT })
 }
 
-
+export const waterPlant = (lastWateredTime) => {
+    console.log(lastWateredTime);
+    return ({ type: WATER, payload: lastWateredTime });
+};
 
 
 export const plantCreater = (data) => dispatch => {
@@ -81,8 +90,29 @@ export const plantCreater = (data) => dispatch => {
     .then(res => {
         
         dispatch({ type: CREATE_PLANT, payload: res.data })
+        
     })
     .catch(err => console.log(err))
+}
+
+export const deletePlant = (id) => dispatch => {
+    console.log("DELETE REQ")
+    axiosWithAuth()
+    .delete(`/api/plants/${id}`)
+    .then(res => dispatch({type: DELETE_PLANT, payload: res.data}))
+    .catch(err => console.log(err))
+}
+
+export const editPlant = (id, plant) => dispatch => {
+    console.log(plant)
+    axiosWithAuth()
+    .put(`/api/plants/${id}`, plant)
+    .then(res => {
+        console.log(res)
+        dispatch({type: EDIT_PLANT, payload: res.data})
+    })
+    .catch(err => console.log(err))
+    
 }
 
 export const fetchPlant = (id) => dispatch => {
