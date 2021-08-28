@@ -31,7 +31,7 @@ const NavBar = (props) => {
     }
 
     return (
-        <div>
+        <div >
            { loggedIn && <button onClick={onClick}>Edit User</button> }
            { loggedIn ? <button onClick={handleSignOut}>Sign Out</button> : <button onClick={handleSignIn}>Sign In</button>}
         </div>

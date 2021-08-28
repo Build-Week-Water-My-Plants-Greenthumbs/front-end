@@ -17,8 +17,11 @@ const LandingPage = (props) => {
   },[]);
 
   return (
-    <div>
-      <h3>{username}</h3>
+
+    <div className="landing_page_container">
+      <div className="landing_page"></div>
+      <h3> Welcome, {username}</h3>
+
       <Link to='/add-plant'><button>Add New Plant</button></Link>
 
       {plantsList.map((plant) => {
@@ -27,6 +30,7 @@ const LandingPage = (props) => {
             <Link className='Links' to={`/plant/${plant.plantId}`}>
               <PlantListItem plant={plant}/>
             </Link>
+
             <WaterTime frequency = {plant.frequency} lastWatered = {plant.lastWatered} />
           </div>
         );
