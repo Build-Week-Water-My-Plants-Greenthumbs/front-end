@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
  import cactus from "../images/cactus.jpg";
  import ficus from "../images/ficus.jpg";
 
@@ -16,7 +16,7 @@ const Home = () => {
         </header>
         <div className="bg_image">
           <span className="image fill" data-position="center">
-            <img src={cactus} alt="photo of cactus" width="50%" height="auto" />
+            <img src={cactus} alt="cactus in a pot" width="50%" height="auto" />
           </span>
         </div>
       </section>
@@ -55,7 +55,7 @@ const Home = () => {
           </h2>
           <div className="bg_image">
           <span className="image fill" data-position="center">
-            <img src={ficus} alt="photo of cactus" width="50%" height="auto" />
+            <img src={ficus} alt="ficus in pot" width="50%" height="auto" />
           </span>
         </div>
 
