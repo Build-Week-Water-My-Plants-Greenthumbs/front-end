@@ -12,7 +12,7 @@ const Plant = (props) => {
     const { push } = useHistory()
     useEffect(() => {
         props.fetchPlant(id)
-    },[])
+    },[]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleToggle = () => {
         props.toggleEdit()

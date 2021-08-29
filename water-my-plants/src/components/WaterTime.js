@@ -37,8 +37,8 @@ const WaterTime = (props) => {
     useEffect(() => {
         handleWaterTime(lastWatered, frequency);
         
-    }, [lastWatered]);
-
+    }, [lastWatered]); // eslint-disable-line react-hooks/exhaustive-deps
+ 
     return (
         <div>
             <p>{watered}</p>

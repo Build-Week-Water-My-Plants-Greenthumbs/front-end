@@ -14,7 +14,7 @@ const LandingPage = (props) => {
       authUser();
     };
     fetchPlantList();
-  },[]);
+  },[]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
 
