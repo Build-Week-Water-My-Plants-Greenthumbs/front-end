@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
  import cactus from "../images/cactus.jpg";
  import ficus from "../images/ficus.jpg";
 
@@ -16,7 +15,7 @@ const Home = () => {
         </header>
         <div className="bg_image">
           <span className="image fill" data-position="center">
-            <img src={cactus} alt="photo of cactus" width="50%" height="auto" />
+            <img src={cactus} alt="cactus" width="50%" height="auto" />
           </span>
         </div>
       </section>
@@ -55,7 +54,7 @@ const Home = () => {
           </h2>
           <div className="bg_image">
           <span className="image fill" data-position="center">
-            <img src={ficus} alt="photo of cactus" width="50%" height="auto" />
+            <img src={ficus} alt="cactus" width="50%" height="auto" />
           </span>
         </div>
 
@@ -107,11 +106,11 @@ const Home = () => {
           <ul className="items">
            
               <h3>Email</h3>
-              <a href="#">information@untitled.ext</a>
+              <p>information@untitled.ext</p>
            
             
               <h3>Phone</h3>
-              <a href="#">(000) 000-0000</a>
+              <p>(000) 000-0000</p>
          
            
               <h3>Address</h3>
@@ -120,27 +119,27 @@ const Home = () => {
             
               <ul className="icons">
             
-                  <a href="#" className="fa fa-twitter fa-fw">
+                  <p className="fa fa-twitter fa-fw">
                     <span className="label"></span>
-                  </a>
+                  </p>
         
            
-                  <a href="#" className="fa fa-facebook-f fa-fw">
+                  <p className="fa fa-facebook-f fa-fw">
                     <span className="label"></span>
-                  </a>
+                  </p>
             
-                  <a href="#" className="fa fa-instagram fa-fw">
+                  <p className="fa fa-instagram fa-fw">
                     <span className="label"></span>
-                  </a>
+                  </p>
             
                 
-                  <a href="#" className="fa fa-github fa-fw">
+                  <p className="fa fa-github fa-fw">
                     <span className="label"></span>
-                  </a>
+                  </p>
              
-                  <a href="#" className="fa fa-codepen fa-fw">
+                  <p className="fa fa-codepen fa-fw">
                     <span className="label"></span>
-                  </a>
+                  </p>
          
               </ul>
           

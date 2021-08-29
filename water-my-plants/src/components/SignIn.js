@@ -40,7 +40,7 @@ const SignIn = (props) => {
         success && history.push('/dashboard')
         console.log(error)
         console.log(success)
-    },[error, success])
+    },[error, success]) // eslint-disable-line react-hooks/exhaustive-deps
 
     
     return (

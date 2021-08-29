@@ -18,7 +18,7 @@ const SignUp = (props) => {
 
     useEffect(() => {
         success && history.push('/signIn')
-    }, [success])
+    }, [success]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const onInputChange = e => {
         setFormData({

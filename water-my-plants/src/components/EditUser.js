@@ -13,7 +13,7 @@ import { editUser } from '../actions';
 
     useEffect(() => {
         success && history.push('/dashboard');
-    }, [success])
+    }, [success]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const onInputChange = e => {
         setFormData({
@@ -33,7 +33,7 @@ import { editUser } from '../actions';
 
     useEffect(() => {
         setFormData(user)
-    }, [])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     
 
